@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>ab3a9a86-188c-4074-ac35-351645c31f8b.SCHEMA:postgres.public</OriginalElement>
+  <nodes>
+    <node x="322.75" y="746.8909362359158">ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.orderitem</node>
+    <node x="53.29980386523641" y="261.7686271006929">ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.cartitem</node>
+    <node x="391.7125" y="-184.75718095626985">ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.useraddress</node>
+    <node x="349.9625" y="70.0">ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.User</node>
+    <node x="264.7664252330502" y="261.7686271006929">ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.cart</node>
+    <node x="593.2816624424296" y="70.0">ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.role</node>
+    <node x="511.97121220975714" y="278.5358731083314">ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.userrole</node>
+    <node x="-358.29391600757185" y="-74.0">ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.category</node>
+    <node x="764.3598621096086" y="-32.248488217486">ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.billingaddress</node>
+    <node x="159.08293700909417" y="501.80865027963137">ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.cartitemcart</node>
+    <node x="-95.97146266065414" y="-74.0">ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.product</node>
+    <node x="141.26442985534766" y="-113.70900552719746">ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.review</node>
+    <node x="739.7054538556771" y="495.9333634211973">ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.Order</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.Order" target="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.billingaddress" relationship="REFERENCES">
+      <point x="37.25" y="-80.0" />
+      <point x="851.4554538556771" y="329.7686271006929" />
+      <point x="851.7483691081895" y="329.7686271006929" />
+      <point x="5.388506998580965" y="104.11605811583831" />
+    </edge>
+    <edge source="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.product" target="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.category" relationship="REFERENCES">
+      <point x="-76.36572543634276" y="-94.7621458948054" />
+      <point x="-93.8371880969969" y="-30.0" />
+      <point x="-293.29391600757185" y="-30.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.orderitem" target="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.product" relationship="REFERENCES">
+      <point x="-37.0" y="-68.0" />
+      <point x="359.75" y="714.8431355034645" />
+      <point x="-83.52254727179997" y="714.8431355034645" />
+      <point x="-66.05108461114582" y="141.2303046925539" />
+    </edge>
+    <edge source="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.useraddress" target="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.User" relationship="REFERENCES">
+      <point x="-37.25" y="-56.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.userrole" target="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.role" relationship="REFERENCES">
+      <point x="31.5" y="-56.0" />
+      <point x="606.4712122097571" y="234.54443397599275" />
+      <point x="658.2816624424296" y="234.54443397599275" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.review" target="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.product" relationship="REFERENCES">
+      <point x="-37.0" y="-80.0" />
+      <point x="178.26442985534766" y="134.01035776329797" />
+      <point x="78.37630275366985" y="68.01035776329797" />
+    </edge>
+    <edge source="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.userrole" target="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.User" relationship="REFERENCES">
+      <point x="-31.5" y="-56.0" />
+      <point x="543.4712122097571" y="234.54443397599275" />
+      <point x="486.8194881319954" y="234.54443397599275" />
+      <point x="57.85698813199542" y="57.32024085129257" />
+    </edge>
+    <edge source="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.useraddress" target="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.billingaddress" relationship="REFERENCES">
+      <point x="72.83868225783806" y="2.3536820345298395" />
+      <point x="539.051182257838" y="-148.41091275664502" />
+      <point x="846.3598621096086" y="-148.41091275664502" />
+      <point x="0.0" y="104.0" />
+    </edge>
+    <edge source="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.review" target="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.User" relationship="REFERENCES">
+      <point x="37.0" y="-80.0" />
+      <point x="252.26442985534766" y="136.30258654855726" />
+      <point x="-77.65256890753619" y="-1.697413451442742" />
+    </edge>
+    <edge source="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.Order" target="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.User" relationship="REFERENCES">
+      <point x="-37.25" y="-80.0" />
+      <point x="776.9554538556771" y="476.4454681179579" />
+      <point x="428.9625" y="476.4454681179579" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.cartitem" target="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.product" relationship="REFERENCES">
+      <point x="-37.0" y="-68.0" />
+      <point x="90.29980386523641" y="281.65172859118366" />
+      <point x="-54.91907122596922" y="281.65172859118366" />
+      <point x="-37.44760856531508" y="111.83228764545004" />
+    </edge>
+    <edge source="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.cartitemcart" target="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.cartitem" relationship="REFERENCES">
+      <point x="-33.0" y="-56.0" />
+      <point x="192.08293700909417" y="451.9930240196576" />
+      <point x="101.90444614501143" y="451.9930240196576" />
+      <point x="-25.39535772022498" y="66.05244264880628" />
+    </edge>
+    <edge source="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.cart" target="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.User" relationship="REFERENCES">
+      <point x="0.0" y="-44.0" />
+      <point x="327.7664252330502" y="187.38756401313015" />
+      <point x="-78.8335441348114" y="49.387564013130145" />
+    </edge>
+    <edge source="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.cartitem" target="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.User" relationship="REFERENCES">
+      <point x="37.0" y="-68.0" />
+      <point x="164.2998038652364" y="168.5736732597473" />
+      <point x="350.4775798453313" y="168.5736732597473" />
+      <point x="-78.48492015466866" y="25.682462280166362" />
+    </edge>
+    <edge source="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.cartitemcart" target="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.cart" relationship="REFERENCES">
+      <point x="33.0" y="-56.0" />
+      <point x="258.08293700909417" y="452.96680269525444" />
+      <point x="363.00949544366927" y="452.96680269525444" />
+      <point x="35.24307021061907" y="44.47905782101475" />
+    </edge>
+    <edge source="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.orderitem" target="ab3a9a86-188c-4074-ac35-351645c31f8b.TABLE:postgres.public.Order" relationship="REFERENCES">
+      <point x="37.0" y="-68.0" />
+      <point x="433.75" y="688.1701098676739" />
+      <point x="814.2054538556771" y="688.1701098676739" />
+      <point x="0.0" y="80.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="285.0000000000001" y="349.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
