@@ -1,24 +1,16 @@
 version: '3.7'
 
 volumes:
-   pg-data:
+   oracle-data:
 
 
 services:
   db:
-    image: postgres:latest
+    image: container-registry.oracle.com/database/enterprise:latest
     restart: always
     environment:
-      POSTGRES_USER: xids00
-      POSTGRES_PASSWORD: gdebody
-      PGDATA: /pgdata
+      ORACLE_PWD: gdebody
     ports:
-      - "5432:5432"
+      - "1521:1521"
     volumes:
-        - pg-data:/pgdata
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - "8080:8080"
+        - oracle-data:/opt/oracle/oradata
