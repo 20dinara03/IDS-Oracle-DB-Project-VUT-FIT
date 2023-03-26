@@ -300,10 +300,11 @@ BEGIN
         user_id integer   not null
             constraint "Payment_User_id_fkey"
                 references "User",
-        account_number char(512) not null,
+        account_number char(16) not null
+              CONSTRAINT payment_account_number_length CHECK (LENGTH(account_number) >= 16),
         expiration_date date not null,
         created_at date not null,
-        is_payed NUMBER(1) default 0,
+        is_paid NUMBER(1) default 0,
         total_price float not null
               CONSTRAINT payment_totalPrice_positive CHECK (total_price > 0)
     )';
@@ -383,3 +384,78 @@ BEGIN
                 RAISE;
             END IF;
 END;
+
+-- ==== MOCK ==== --
+INSERT INTO Category (name) VALUES ('Electronics');
+INSERT INTO Category (name) VALUES ('Books');
+INSERT INTO Category (name) VALUES ('Home & Garden');
+INSERT INTO Category (name) VALUES ('Toys');
+INSERT INTO Category (name) VALUES ('Clothing');
+INSERT INTO Category (name) VALUES ('Food & Drinks');
+INSERT INTO Category (name) VALUES ('Beauty & Personal Care');
+INSERT INTO Category (name) VALUES ('Sports & Outdoors');
+INSERT INTO Category (name) VALUES ('Music');
+INSERT INTO Category (name) VALUES ('Pets');
+INSERT INTO Product (name,price,category_id,description,img_path) VALUES ('Smartphone',499.99,1,'High-quality smartphone with advanced features','https://example.com/smartphone.jpg');
+INSERT INTO Product (name,price,category_id,description,img_path) VALUES ('Novel',15.99,2,'Fictional book with compelling storyline','https://example.com/novel.jpg');
+INSERT INTO Product (name,price,category_id,description,img_path) VALUES ('Sofa',799.99,3,'Comfortable and stylish sofa for your living room','https://example.com/sofa.jpg');
+INSERT INTO Product (name,price,category_id,description,img_path) VALUES ('Action Figure',29.99,4,'Collectible action figure from popular movie franchise','https://example.com/action-figure.jpg');
+INSERT INTO Product (name,price,category_id,description,img_path) VALUES ('T-Shirt',19.99,5,'Casual and trendy t-shirt for everyday wear','https://example.com/t-shirt.jpg');
+INSERT INTO Product (name,price,category_id,description,img_path) VALUES ('Chocolate',4.99,6,'Premium chocolate made from high-quality cocoa beans','https://example.com/chocolate.jpg');
+INSERT INTO Product (name,price,category_id,description,img_path) VALUES ('Shampoo',9.99,7,'Natural and nourishing shampoo for all hair types','https://example.com/shampoo.jpg');
+INSERT INTO Product (name,price,category_id,description,img_path) VALUES ('Yoga Mat',39.99,8,'Non-slip yoga mat for comfortable and safe practice','https://example.com/yoga-mat.jpg');
+INSERT INTO Product (name,price,category_id,description,img_path) VALUES ('Vinyl Record',29.99,9,'Classic vinyl record of a timeless album','https://example.com/vinyl-record.jpg');
+INSERT INTO Product (name,price,category_id,description,img_path) VALUES ('Dog Food',24.99,10,'High-quality and nutritious dog food for all breeds and sizes','https://example.com/dog-food.jpg');
+INSERT INTO BillingAddress (country,zip,city,street,house) VALUES ('United States','10001','New York','Broadway','123');
+INSERT INTO BillingAddress (country,zip,city,street,house) VALUES ('Canada','10001','Toronto','Queen Street West','456');
+INSERT INTO BillingAddress (country,zip,city,street,house) VALUES ('United Kingdom','10001','London','Buckingham Palace Road','789');
+INSERT INTO BillingAddress (country,zip,city,street,house) VALUES ('Germany','10001','Berlin','Unter den Linden','1011');
+INSERT INTO BillingAddress (country,zip,city,street,house) VALUES ('Japan','10001','Chiyoda','Tokyo Station','1213');
+INSERT INTO Role (name) VALUES ('Admin');
+INSERT INTO Role (name) VALUES ('Employee');
+INSERT INTO Role (name) VALUES ('User');
+INSERT INTO "User" (name,password,second_name,email,stuff) VALUES ('John','johndoe123','Doe','johndoe@example.com',0);
+INSERT INTO "User" (name,password,second_name,email,stuff) VALUES ('Jane','janedoe456','Doe','janedoe@example.com',1);
+INSERT INTO "User" (name,password,second_name,email,stuff) VALUES ('Bob','bobsmith789','Smith','bobsmith@example.com',0);
+INSERT INTO "User" (name,password,second_name,email,stuff) VALUES ('Alice','alicebrown012','Brown','alicebrown@example.com',1);
+INSERT INTO "User" (name,password,second_name,email,stuff) VALUES ('David','davidmiller345','Miller','davidmiller@example.com',0);
+INSERT INTO UserRole (user_id,role_id) VALUES (1,3);
+INSERT INTO UserRole (user_id,role_id) VALUES (2,2);
+INSERT INTO UserRole (user_id,role_id) VALUES (3,3);
+INSERT INTO UserRole (user_id,role_id) VALUES (4,1);
+INSERT INTO UserRole (user_id,role_id) VALUES (5,3);
+INSERT INTO Review (product_id,user_id,stars,description) VALUES (1,1,4,'This product exceeded my expectations!');
+INSERT INTO Review (product_id,user_id,stars,description) VALUES (2,2,2,'Not worth the price.');
+INSERT INTO Review (product_id,user_id,stars,description) VALUES (3,3,5,'Amazing product, highly recommended!');
+INSERT INTO Review (product_id,user_id,stars,description) VALUES (4,4,3,'Decent product, but not the best.');
+INSERT INTO Review (product_id,user_id,stars,description) VALUES (5,5,1,'Terrible quality, do not buy!');
+INSERT INTO Review (product_id,user_id,stars,description) VALUES (6,1,4,'Great value for the price.');
+INSERT INTO Review (product_id,user_id,stars,description) VALUES (7,2,5,'Best product Ive ever used!');
+INSERT INTO CartItem (product_id,user_id,quantity) VALUES (1,1,2);
+INSERT INTO CartItem (product_id,user_id,quantity) VALUES (2,2,1);
+INSERT INTO CartItem (product_id,user_id,quantity) VALUES (3,3,3);
+INSERT INTO CartItem (product_id,user_id,quantity) VALUES (4,4,5);
+INSERT INTO CartItem (product_id,user_id,quantity) VALUES (5,5,2);
+INSERT INTO CartItem (product_id,user_id,quantity) VALUES (6,1,1);
+INSERT INTO CartItem (product_id,user_id,quantity) VALUES (7,2,4);
+INSERT INTO Payment (user_id,account_number,expiration_date,created_at,is_paid,total_price) VALUES (1,'1234123412341234','31-12-2022','31-12-2021',1,123.45);
+INSERT INTO Payment (user_id,account_number,expiration_date,created_at,is_paid,total_price) VALUES (2,'1234123412341234','31-12-2022','31-12-2021',1,67.89);
+INSERT INTO Payment (user_id,account_number,expiration_date,created_at,is_paid,total_price) VALUES (3,'1234123412341234','31-12-2022','31-12-2021',1,321.98);
+INSERT INTO Payment (user_id,account_number,expiration_date,created_at,is_paid,total_price) VALUES (4,'1234123412341234','31-12-2022','31-12-2021',1,76.54);
+INSERT INTO "Order" (user_id,total_price,address_id,payment_id,status) VALUES (1,123.45,1,1,'Pending');
+INSERT INTO "Order" (user_id,total_price,address_id,payment_id,status) VALUES (2,67.89,2,1,'Shipped');
+INSERT INTO "Order" (user_id,total_price,address_id,payment_id,status) VALUES (3,321.98,3,1,'Delivered');
+INSERT INTO "Order" (user_id,total_price,address_id,payment_id,status) VALUES (4,76.54,1,1,'Cancelled');
+INSERT INTO "Order" (user_id,total_price,address_id,payment_id,status) VALUES (5,54.32,1,1,'Pending');
+INSERT INTO "Order" (user_id,total_price,address_id,payment_id,status) VALUES (1,98.76,2,1,'Shipped');
+INSERT INTO "Order" (user_id,total_price,address_id,payment_id,status) VALUES (2,234.56,3,1,'Delivered');
+INSERT INTO OrderItem (order_id,product_id,quantity) VALUES (1,3,2);
+INSERT INTO OrderItem (order_id,product_id,quantity) VALUES (2,1,1);
+INSERT INTO OrderItem (order_id,product_id,quantity) VALUES (3,7,3);
+INSERT INTO OrderItem (order_id,product_id,quantity) VALUES (4,9,2);
+INSERT INTO OrderItem (order_id,product_id,quantity) VALUES (5,2,1);
+INSERT INTO OrderItem (order_id,product_id,quantity) VALUES (4,5,3);
+INSERT INTO OrderItem (order_id,product_id,quantity) VALUES (3,8,2);
+INSERT INTO OrderItem (order_id,product_id,quantity) VALUES (2,4,1);
+INSERT INTO OrderItem (order_id,product_id,quantity) VALUES (1,6,3);
+INSERT INTO OrderItem (order_id,product_id,quantity) VALUES (1,2,2);
