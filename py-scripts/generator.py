@@ -168,7 +168,6 @@ order_items = [OrderItem(order_id=1, product_id=3, quantity=2), OrderItem(order_
                OrderItem(order_id=7, product_id=8, quantity=2), OrderItem(order_id=8, product_id=4, quantity=1),
                OrderItem(order_id=9, product_id=6, quantity=3), OrderItem(order_id=10, product_id=2, quantity=2)]
 
-
 # to SQL
 
 def create_esc_list(i):
