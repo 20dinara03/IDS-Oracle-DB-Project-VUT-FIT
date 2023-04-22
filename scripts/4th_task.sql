@@ -558,6 +558,8 @@ EXCEPTION
     CLOSE order_cursor;
 END;
 
+BEGIN PRINT_ORDERS(); END;
+
 -- Tato procedura aktualizuje stav objednávky na základě zadaného ID objednávky a nového stavu. Využívá kurzor k
 -- získání konkrétní objednávky a ošetřuje výjimku, pokud objednávka s daným ID neexistuje
 CREATE OR REPLACE PROCEDURE update_order_status(p_order_id IN INTEGER, p_new_status IN VARCHAR2) IS
@@ -570,6 +572,8 @@ DBMS_OUTPUT.PUT_LINE('Error: Order with ID ' || p_order_id || ' does not exist')
 WHEN OTHERS THEN
 DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
 END;
+
+BEGIN update_order_status(1, 'canceled'); END;
 
 -- BEGIN update_order_status(4, 'processing'); END;
 
@@ -592,8 +596,6 @@ FROM "Order"
 JOIN OrderItem ON OrderItem.order_id = "Order".id
 WHERE OrderItem.product_id = (SELECT id FROM Product WHERE name = 'Sofa')
 GROUP BY "Order".id;
-
-SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);
 
 -- === 5 === ---
 GRANT SELECT, INSERT, UPDATE, DELETE ON ADMIN TO xgarip00;
